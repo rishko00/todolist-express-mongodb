@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+
+  <body>
+    {{> navbar}}
+    <h1>{{title}}</h1>
+    <ul>
+        {{#each todos}}
+	<li>
+	  <form class="todo" action="/" method="post">
+		{{#if (ischecked this.done)}}
+		 <input type="checkbox" name="check"checked> 
+		{{else}}
+		 <input type="checkbox" name="check"> 
+		{{/if}}
+		<b>{{this.title}}</b>  
+		<span>{{this.date}}</span>
+		<input type="hidden" value="{{_id}}" name="id">
+		<input type="submit" value="save"/>
+	</form>
+	</li>
+	{{/each}}
+    </ul>
+  </body>
+</html>
